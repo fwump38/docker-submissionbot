@@ -37,7 +37,7 @@ docker run -t -i -d \
 * `-e CLIENT_SECRET` - The Client Secret of the Reddit App you setup. **Required**
 * `-e SUBREDDIT` - The name of the subreddit to monitor. **Required**
 * `-e WEBHOOK` - The URL for a Slack Incoming Webhook. **Required**
-* `-e CHANNEL` - The Slack Channel to send Submissions to - defaults to #submission_feed otherwise **Optional**
+* `-e CHANNEL` - The Slack Channel to send Submissions to - defaults to #mod_feed otherwise **Optional**
 
 **Note:** To run Submissionbot with multiple subreddits, you will need to spin up additional docker containers. 
 This can be simplified using a docker-compose file with each subreddit as it's own service with their own environment variables. See the example [docker-compose](docker-compose.yml.example) file.

@@ -16,7 +16,7 @@ import praw
 import requests
 
 __author__ = "/u/fwump38"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 ###################
 ## Config
@@ -30,7 +30,7 @@ subreddit = os.getenv("SUBREDDIT")
 
 # Settings for Slack
 webhook = os.getenv("WEBHOOK")
-channel = os.getenv("CHANNEL", "#submission_feed")
+channel = os.getenv("CHANNEL", "#mod_feed")
 
 # Setup Logging
 logger = logging.getLogger(__name__)
