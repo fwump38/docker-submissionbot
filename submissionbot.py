@@ -4,6 +4,7 @@ Reddit New Post Bot
 
 """
 
+import re
 import os
 import json
 import time
