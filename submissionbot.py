@@ -522,7 +522,7 @@ if __name__ == "__main__":
     sub = r.subreddit(subreddit)
 
     # Stream submissions
-    for submission in sub.stream.submissions():
+    for submission in sub.stream.submissions(skip_existing=True):
         # Post to Slack
         blocks = [
             LayoutSection(
