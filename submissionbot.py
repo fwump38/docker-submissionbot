@@ -16,7 +16,7 @@ import praw
 import requests
 
 __author__ = "/u/fwump38"
-__version__ = "1.0.1"
+__version__ = "1.0.3"
 
 ###################
 ## Config
@@ -556,7 +556,11 @@ if __name__ == "__main__":
             )
         )
         # Post to Slack
-        slack_msg = {"text": "User Report", "blocks": clean(blocks), "channel": channel}
+        slack_msg = {
+            "text": f"New Submission: {submission.title}",
+            "blocks": clean(blocks),
+            "channel": channel,
+        }
         r = requests.post(webhook, json=slack_msg)
         if r.ok:
             logger.info("Sent Submission to Slack!")
