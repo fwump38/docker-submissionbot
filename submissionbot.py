@@ -16,7 +16,7 @@ import praw
 import requests
 
 __author__ = "/u/fwump38"
-__version__ = "1.0.3"
+__version__ = "1.0.3b"
 
 ###################
 ## Config
@@ -30,6 +30,7 @@ subreddit = os.getenv("SUBREDDIT")
 
 # Settings for Slack
 webhook = os.getenv("WEBHOOK")
+webhook_beta = os.getenv("WEBHOOK_BETA")
 channel = os.getenv("CHANNEL", "#mod_feed")
 
 # Setup Logging
@@ -534,7 +535,7 @@ if __name__ == "__main__":
             )
         ]
         if submission.selftext:
-            blocks.append(LayoutSection(TextMarkdown(f"{submission.selftext}")))
+            blocks.append(LayoutSection(TextMarkdown(f"{submission.selftext[:2900]}")))
         else:
             post_hint = getattr(submission, "post_hint", None)
             if post_hint == "image":
@@ -566,3 +567,7 @@ if __name__ == "__main__":
             logger.info("Sent Submission to Slack!")
         else:
             logger.error("Sending Submission to Slack Failed!")
+        # Send to beta channel
+        permalink = f"https://www.reddit.com{submission.permalink}"
+        r = requests.post(webhook_beta, json={"text": permalink, "unfurl_links": True})
+
